@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, use } from "react";
+import ColorfulButton from "./ColorfulButton";
 import { IoMenu } from "react-icons/io5";
 
 
@@ -46,8 +47,7 @@ export default function Navbar() {
                         <li>Pubs</li>
                         <div className="flex gap-5 items-center">
                         <input type="button" className="border px-10 rounded-xl py-2" value={"Login"}></input>
-                        <input type="button" className="border px-10 rounded-xl py-2" value={"Register"}></input>
-
+                        <ColorfulButton text="Sign Up" />
                         </div>
                     </ul>
             }
