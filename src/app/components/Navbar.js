@@ -7,7 +7,7 @@ import ColorfulButton from "./ColorfulButton";
 import { IoMenu } from "react-icons/io5";
 
 
-export default function Navbar() {
+export default function Navbar({extras}) {
 
     let [showMenuButton, setShowMenuButton] = useState(false);
     let [menuState, setMenuState] = useState(false);
@@ -38,18 +38,24 @@ export default function Navbar() {
                 <div className="flex items-center">
                     { showMenuButton ? 
                     <div className="flex flex-col items-center">
-                        <IoMenu className="cursor-pointer" onClick={() => { setMenuState(!menuState); console.log(menuState); }} color="#4D4670" size={80}/>
+                        <IoMenu className="cursor-pointer" onClick={() => { setMenuState(!menuState); }} color="#4D4670" size={80}/>
                     </div>   
                      : 
-                    <ul className="flex gap-10 items-center">
-                        <li>Clubs</li>
-                        <li>Events</li>
-                        <li>Pubs</li>
-                        <div className="flex gap-5 items-center">
-                        <input type="button" className="border px-10 rounded-xl py-2" value={"Login"}></input>
-                        <ColorfulButton text="Sign Up" />
-                        </div>
-                    </ul>
+                     <ul className="flex gap-10 items-center">
+                             { extras &&
+                              <>
+                             <li>Clubs</li>
+                             <li>Events</li>
+                             <li>Pubs</li>
+                             </>
+                            }
+                             <div className="flex gap-5 items-center">
+                            
+                             <input type="button" className="border px-10 rounded-xl py-2" value={"Login"}></input>
+                             <ColorfulButton text="Sign Up" />
+                             </div>
+                         </ul>
+                     
             }
                 </div>
             </div>
