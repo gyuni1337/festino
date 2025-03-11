@@ -2,7 +2,7 @@
 import Navbar from "@/components/Navbar";
 import ColoredText from "@/components/ColoredText";
 import ColorfulButton from "./components/ColorfulButton";
-import Footer from "./components/Footer";
+import Footer from "@/components/Footer";
 import Button from "@/components/Button";
 
 export default function Home() {
