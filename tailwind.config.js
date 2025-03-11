@@ -11,7 +11,12 @@ module.exports = {
         primary: "#4D4670",
         secondary: "#E5E5E5",
         text: "#CDCDCD",
+        graytext: "#ABABAB",
+        footerbg: "#161616",
       },
+      boxShadow: {
+        'footerShadow': '0px -11px 32px #443C68',
+      }
     },
   },
   plugins: [],

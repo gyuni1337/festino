@@ -33,7 +33,7 @@ export default function Navbar({extras}) {
 
     return (
         <>
-            <div className="flex justify-around xl:mx-48 mt-10">
+            <div className="flex justify-around xl:mx-[0%] mt-10">
             <Image src="/purpleLogo.png" alt="logo" width="300" height="400" />
                 <div className="flex items-center">
                     { showMenuButton ? 
