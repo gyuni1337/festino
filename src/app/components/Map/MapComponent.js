@@ -9,13 +9,9 @@ import MarkerComponent from "@/components/Map/MarkerComponent";
 // make marker the icon
 const customIcon = new Icon({
   iconUrl: "/marker.png",
-  iconSize: [100, 100],
+  iconSize: [80, 80],
 });
 
-const restaurants = [
-  { id: 1, lat: 40.7128, lng: -74.006, name: "Joe's Pizza" },
-  { id: 2, lat: 34.0522, lng: -118.2437, name: "Sushi Spot" },
-];
 
 export default function MapComponent() {
   return (
