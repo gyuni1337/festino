@@ -7,7 +7,7 @@ import ColorfulButton from "./ColorfulButton";
 import { IoMenu } from "react-icons/io5";
 
 
-export default function Navbar({extras}) {
+export default function Navbar({extras, marginTop}) {
 
     let [showMenuButton, setShowMenuButton] = useState(false);
     let [menuState, setMenuState] = useState(false);
@@ -33,7 +33,7 @@ export default function Navbar({extras}) {
 
     return (
         <>
-            <div className="flex justify-around xl:mx-[0%] mt-10">
+            <div className={`flex justify-around xl:mx-[0%] ${marginTop }`}>
             <Image src="/purpleLogo.png" alt="logo" width="300" height="400" />
                 <div className="flex items-center">
                     { showMenuButton ? 

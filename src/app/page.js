@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <>
-      <Navbar />
+      <Navbar marginTop={"mt-10"}/>
       <main className="lg:mx-[15%] mx-[10%] mt-[5%]">
         <div>
         <div className="flex flex-col gap-10">
