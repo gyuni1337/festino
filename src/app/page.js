@@ -18,8 +18,8 @@ export default function Home() {
         </div>
 
       <div className="flex gap-5 mt-12">
-        <ColorfulButton text="Explore" />
-        <Button text="Search" />
+        <ColorfulButton href="/search" text="Explore" />
+        <Button text="Sign In" />
       </div>
 
         </div>

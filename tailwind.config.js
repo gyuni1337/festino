@@ -11,7 +11,7 @@ module.exports = {
         primary: "#4D4670",
         secondary: "#E5E5E5",
         text: "#CDCDCD",
-        darkGray: "#1D1C1A",
+        darkGray: "#141313",
         graytext: "#ABABAB",
         footerbg: "#161616",
       },
