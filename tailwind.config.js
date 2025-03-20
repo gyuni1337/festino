@@ -16,7 +16,8 @@ module.exports = {
         footerbg: "#161616",
       },
       boxShadow: {
-        'navShadow': '0px 10px 32px #443C68',
+        'navShadow': '0px 0px 32px #443C68',
+        'menuShadow': '0px 0px 32px #443C68',
         'footerShadow': '0px -11px 32px #443C68',
       }
     },
