@@ -8,7 +8,7 @@ import MarkerComponent from "@/components/Map/MarkerComponent";
 
 // make marker the icon
 const customIcon = new Icon({
-  iconUrl: "/marker.png",
+  iconUrl: "/lightMarker.png",
   iconSize: [80, 80],
 });
 

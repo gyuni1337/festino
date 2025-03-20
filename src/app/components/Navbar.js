@@ -34,7 +34,7 @@ export default function Navbar({extras, marginTop, shadow}) {
     return (
         <>
             <div className={`flex justify-around z-[100] relative bg-darkGray xl:mx-[0%] ${marginTop } ${shadow}`}>
-            <Image src="/purpleLogo.png" alt="logo" width="300" height="400" />
+            <Image src="/lightLogo.png" alt="logo" width="300" height="400" />
                 <div className="flex items-center">
                     { showMenuButton ? 
                     <div className="flex flex-col items-center">
