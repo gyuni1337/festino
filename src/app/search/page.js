@@ -7,15 +7,16 @@ import dynamic from "next/dynamic";
 import "leaflet/dist/leaflet.css";
 
 const Map = dynamic(() => import("@/components/Map/MapComponent"), { ssr: false });
-
+import MapMenu from '@/components/Map/MapMenu';
 
 export default function Page() {
 
   return (
     <>
+      <main className="relative w-full h-screen overflow-hidden">
       <Navbar />
-      <main className="w-screen h-screen">
         <Map />
+        <MapMenu/>
       </main>
 
     </>
