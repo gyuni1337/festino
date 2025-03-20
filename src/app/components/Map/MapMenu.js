@@ -4,18 +4,20 @@ import { IoFastFoodOutline } from "react-icons/io5";
 import { PiDiscoBallFill } from "react-icons/pi";
 import { IoBeer } from "react-icons/io5";
 import { FaF, FaFilter } from "react-icons/fa6";
+import ListModal from '@/components/ListModal';
 import { IoSearch } from "react-icons/io5";
 
 
 export default function MapMenu() {
 
     const [search, setSearch] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
 
 
   return (
     <div className='absolute left-[19%] top-[80%] w-[60%] h-24 rounded-xl bg-darkGray shadow-menuShadow'>
         <div className='flex justify-around items-center h-full'>
-            <div className='flex flex-col gap-1 cursor-pointer items-center'>
+            <div onClick={() => {setIsOpen(true)}} className='flex flex-col gap-1 cursor-pointer items-center'>
                 <IoMdList color='#A491FF' size={50}/>
                 <h1 className='text-white'>My List</h1>
             </div>
@@ -52,6 +54,8 @@ export default function MapMenu() {
             </div>
 
         </div>
+        <ListModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+
     </div>
   )
 }
