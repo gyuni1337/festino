@@ -7,7 +7,7 @@ import ColorfulButton from "./ColorfulButton";
 import { IoMenu } from "react-icons/io5";
 
 
-export default function Navbar({extras, marginTop}) {
+export default function Navbar({extras, marginTop, shadow}) {
 
     let [showMenuButton, setShowMenuButton] = useState(false);
     let [menuState, setMenuState] = useState(false);
@@ -33,8 +33,8 @@ export default function Navbar({extras, marginTop}) {
 
     return (
         <>
-            <div className={`flex justify-around xl:mx-[0%] ${marginTop }`}>
-            <Image src="/purpleLogo.png" alt="logo" width="300" height="400" />
+            <div className={`flex justify-around z-[100] relative bg-darkGray xl:mx-[0%] ${marginTop } ${shadow}`}>
+            <Image src="/lightLogo.png" alt="logo" width="300" height="400" />
                 <div className="flex items-center">
                     { showMenuButton ? 
                     <div className="flex flex-col items-center">
@@ -52,7 +52,7 @@ export default function Navbar({extras, marginTop}) {
                              <div className="flex gap-5 items-center">
                             
                              <input type="button" className="border px-10 rounded-xl py-2" value={"Login"}></input>
-                             <ColorfulButton text="Sign Up" />
+                             <ColorfulButton href="/signup" text="Sign Up" />
                              </div>
                          </ul>
                      
