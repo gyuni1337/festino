@@ -15,9 +15,9 @@ export default function MapMenu() {
 
 
   return (
-    <div className='absolute left-[19%] top-[80%] w-[60%] h-24 rounded-xl bg-darkGray shadow-menuShadow'>
-        <div className='flex justify-around items-center h-full'>
-            <div onClick={() => {setIsOpen(true)}} className='flex flex-col gap-1 cursor-pointer items-center'>
+    <div className='absolute left-[19%] top-[80%] w-[60%] h-24 rounded-xl hover:bg-black transition-all  bg-darkGray shadow-menuShadow'>
+        <div className='flex justify-center gap-12 items-center h-full'>
+            <div onClick={() => {setIsOpen(true)}} className='flex flex-col transition-all hover:-translate-y-0.5 cursor-pointer items-center'>
                 <IoMdList color='#A491FF' size={50}/>
                 <h1 className='text-white'>My List</h1>
             </div>
@@ -32,23 +32,23 @@ export default function MapMenu() {
                 />
                 </div>
 
-            <div className='flex flex-col gap-1 cursor-pointer items-center'>
+            <div className='flex flex-col transition-all hover:-translate-y-0.5 gap-1 cursor-pointer items-center'>
                 <IoFastFoodOutline color='#A491FF' size={40}/>
                 <h1 className='text-white'>Food</h1>
             </div>
 
 
-            <div className='flex flex-col gap-1 cursor-pointer items-center'>
+            <div className='flex flex-col gap-1 transition-all hover:-translate-y-0.5 cursor-pointer items-center'>
                 <PiDiscoBallFill color='#A491FF' size={40}/>
                 <h1 className='text-white'>Clubs</h1>
             </div>
     
-                    <div className='flex flex-col gap-1 cursor-pointer items-center'>
+                    <div className='flex flex-col  transition-all hover:-translate-y-0.5 gap-1 cursor-pointer items-center'>
                 <IoBeer color='#A491FF' size={40}/>
                 <h1 className='text-white'>Pubs</h1>
             </div>
 
-            <div className='flex flex-col gap-1 cursor-pointer items-center'>
+            <div className='flex flex-col gap-1 transition-all hover:-translate-y-0.5 cursor-pointer items-center'>
                 <FaFilter color='white' size={40}/>
                 <h1 className='text-white'>Filter</h1>
             </div>
