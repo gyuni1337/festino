@@ -2,9 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+  height: 100%;
+}
 
 body {
   background: #141313;
   color: #E5E5E5;
   overflow-x: hidden;
+}
+
+.leaflet-container {
+  z-index: 0 !important;
+}
+
+*:focus {
+  outline: none;
+  box-shadow: none;
 }
