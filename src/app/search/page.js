@@ -11,7 +11,6 @@ const Map = dynamic(() => import("@/components/Map/MapComponent"), { ssr: false 
 import MapMenu from '@/components/Map/MapMenu';
 
 export default function Page() {
-    const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>

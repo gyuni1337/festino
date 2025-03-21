@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState, useEffect, use } from "react";
 import ColorfulButton from "./ColorfulButton";
 import { IoMenu } from "react-icons/io5";
+import Button from "./Button";
 
 
 export default function Navbar({extras, marginTop, shadow}) {
@@ -33,7 +34,7 @@ export default function Navbar({extras, marginTop, shadow}) {
 
     return (
         <>
-            <div className={`flex justify-around z-[100] relative bg-darkGray xl:mx-[0%] ${marginTop } ${shadow}`}>
+            <div className={`flex justify-around z-[100] relative transition-all bg-darkGray xl:mx-[0%] ${marginTop } ${shadow}`}>
             <Image src="/lightLogo.png" alt="logo" width="300" height="400" />
                 <div className="flex items-center">
                     { showMenuButton ? 
@@ -50,8 +51,8 @@ export default function Navbar({extras, marginTop, shadow}) {
                              </>
                             }
                              <div className="flex gap-5 items-center">
-                            
-                             <input type="button" className="border px-10 rounded-xl py-2" value={"Login"}></input>
+
+                             <Button text="Sign In" />
                              <ColorfulButton href="/signup" text="Sign Up" />
                              </div>
                          </ul>
