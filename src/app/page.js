@@ -19,7 +19,7 @@ export default function Home() {
 
       <div className="flex gap-5 mt-12">
         <ColorfulButton href="/search" text="Explore" />
-        <Button text="Sign In" />
+        <Button href="/signin" text="Sign In" />
       </div>
 
         </div>

@@ -52,7 +52,7 @@ export default function Navbar({extras, marginTop, shadow}) {
                             }
                              <div className="flex gap-5 items-center">
 
-                             <Button text="Sign In" />
+                             <Button href="/signin" text="Sign In" />
                              <ColorfulButton href="/signup" text="Sign Up" />
                              </div>
                          </ul>
