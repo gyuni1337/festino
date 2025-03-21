@@ -8,7 +8,6 @@ export default function Page() {
             <div>
                 <Navbar />
             </div>
-            
             <div className="flex justify-center items-center px-4 py-24">
                 <div className="w-[788px] p-6 border-4 border-[#443C68] shadow-[0_5px_9.2px_#635985] rounded-[37px]">
                     <div className="grid grid-cols-2 gap-6">

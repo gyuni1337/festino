@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Link from 'next/link';
 
-export default function Button({text}) {
+export default function Button({ href, text }) {
   return (
-    <button className="px-10 py-2 rounded-xl border shadow-xl hover:text-white hover:border-white border-text text-text ">
+    <Link href={href} legacyBehavior>
+      <a className="px-10 py-2 rounded-xl border shadow-xl hover:text-white hover:border-white border-text text-text">
         {text}
-    </button>
-  )
+      </a>
+    </Link>
+  );
 }
