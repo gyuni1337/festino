@@ -30,8 +30,12 @@ export default function MapComponent() {
   return (
     <MapContainer center={[56.043435668784134, 12.695556265645147]} zoom={15} className="absolute top-0 left-0 h-full z-0 w-full">
       <TileLayer url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png" />
-        {/* how to make this marker have onclick */}
-        <MarkerComponent key={"x"} title="Helsingborg C" type={"food"} position={[56.04434616837272, 12.694410151848887]} />
+        {/* <MarkerComponent key={"x"} title="Helsingborg C" type={"food"} position={[56.04434616837272, 12.694410151848887]} /> */}
+
+        {markers.map((marker, index) => (
+          console.log(marker.coordinates) &&
+          <MarkerComponent key={index} title={marker.name} type={marker.type} position={[marker.coordinates[0], marker.coordinates[1]]} /> 
+        ))}
     
           
     </MapContainer>
