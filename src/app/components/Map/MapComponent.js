@@ -4,15 +4,25 @@ import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { divIcon, Icon } from "leaflet";
+import axiosInstance from "@/utils/axios";
 
 import MarkerComponent from "@/components/Map/MarkerComponent";
 export default function MapComponent() {
 
   const [markers, setMarkers] = useState([]);
-  const [selectedMarker, setSelectedMarker] = useState(null);
 
   useEffect(() => {
 
+    const getAllMarkers = async () => {
+      const clubs = await axiosInstance.get("/clubs");
+      const food = await axiosInstance.get("/food");
+      const pubs = await axiosInstance.get("/pubs");
+
+      const data = [...clubs.data, ...food.data, ...pubs.data];
+      setMarkers(data);
+    }
+
+    getAllMarkers();
 
     
   }, []); 

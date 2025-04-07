@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import { Marker, Popup } from "react-leaflet";
 import L from "leaflet";
-import PlaceModal from './PlaceModal';
+import PlaceModal from './LocationModal';
+import LocationModal from './LocationModal';
 
 const createCustomIcon = (title, type) => {
   return L.divIcon({
@@ -36,7 +37,7 @@ export default function MarkerComponent({position, title, type, onClick, venueDa
       />
 
       {isModalOpen && (
-        <PlaceModal 
+        <LocationModal 
           isOpen={true}
           onClose={() => setIsModalOpen(false)} 
           venue={venueData || {
