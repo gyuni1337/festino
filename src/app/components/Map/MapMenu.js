@@ -15,7 +15,7 @@ export default function MapMenu() {
 
 
   return (
-    <div className='absolute left-[19%] top-[80%] w-[60%] h-24 rounded-xl hover:bg-black transition-all  bg-darkGray shadow-menuShadow'>
+    <div className='absolute left-[30%] top-[80%] w-[41%] h-24 rounded-xl hover:bg-black transition-all  bg-darkGray shadow-menuShadow'>
         <div className='flex justify-center gap-12 items-center h-full'>
             <div onClick={() => {setIsOpen(true)}} className='flex flex-col transition-all hover:-translate-y-0.5 cursor-pointer items-center'>
                 <IoMdList color='#A491FF' size={50}/>
@@ -47,11 +47,7 @@ export default function MapMenu() {
                 <IoBeer color='#A491FF' size={40}/>
                 <h1 className='text-white'>Pubs</h1>
             </div>
-
-            <div className='flex flex-col gap-1 transition-all hover:-translate-y-0.5 cursor-pointer items-center'>
-                <FaFilter color='white' size={40}/>
-                <h1 className='text-white'>Filter</h1>
-            </div>
+        
 
         </div>
         <ListModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
