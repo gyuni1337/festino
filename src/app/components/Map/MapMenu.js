@@ -15,7 +15,7 @@ export default function MapMenu() {
 
 
   return (
-    <div className='absolute left-[30%] top-[80%] w-[41%] h-24 rounded-xl hover:bg-black transition-all  bg-darkGray shadow-menuShadow'>
+    <div className='absolute left-[25%] top-[80%] w-[50%] h-24 rounded-xl hover:bg-black transition-all  bg-darkGray shadow-menuShadow'>
         <div className='flex justify-center gap-12 items-center h-full'>
             <div onClick={() => {setIsOpen(true)}} className='flex flex-col transition-all hover:-translate-y-0.5 cursor-pointer items-center'>
                 <IoMdList color='#A491FF' size={50}/>
