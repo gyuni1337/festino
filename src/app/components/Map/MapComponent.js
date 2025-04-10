@@ -33,7 +33,6 @@ export default function MapComponent() {
         {/* <MarkerComponent key={"x"} title="Helsingborg C" type={"food"} position={[56.04434616837272, 12.694410151848887]} /> */}
 
         {markers.map((marker, index) => (
-          console.log(marker.coordinates) &&
           <MarkerComponent key={index} title={marker.name} type={marker.type} position={[marker.coordinates[0], marker.coordinates[1]]} /> 
         ))}
     
