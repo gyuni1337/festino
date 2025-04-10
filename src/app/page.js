@@ -12,6 +12,7 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
+
     <>
       <Navbar marginTop={"mt-10"}/>
       <main className="lg:mx-[15%] mx-[10%] mt-[5%]">

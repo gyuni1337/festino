@@ -1,8 +1,29 @@
+"use client";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Link from "next/link";
+import { useState } from "react";
+import axios from "axios";
 
 export default function Page() {
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const loginUser = async (email, password) => {
+        try {
+            const response = await axios.post("/api/auth", {
+            action: "login",
+            email,
+            password,
+            });
+            return response.data; // You should store the token somewhere like localStorage or context
+        } catch (error) {
+            console.error("Login Error:", error);
+            throw new Error("Login failed");
+        }
+        };
+
     return (
         <div className="min-h-screen bg-[#141313]">
             <div>
@@ -22,6 +43,7 @@ export default function Page() {
                                     <input
                                         type="email"
                                         className="w-[329px] h-[38px] bg-[#D0D0D0] border-2 border-white rounded-[14px] px-4 text-lg"
+                                        onChange={(e) => setEmail(e.target.value)}
                                         placeholder="Begin typing here.."
                                     />
                                 </div>
@@ -31,13 +53,24 @@ export default function Page() {
                                     <input
                                         type="password"
                                         className="w-[329px] h-[38px] border-2 border-white rounded-[14px] px-4 text-lg bg-transparent"
+                                        onChange={(e) => setPassword(e.target.value)}
                                         placeholder="Begin typing here.."
                                     />
                                 </div>
                                 
                             
                                 
-                                <button className="w-[139px] h-[43px] bg-gradient-to-r from-[#9A9A9A] via-[#635985] to-[#443C68] border border-white rounded-[17px] text-xl text-white">
+                              <button onClick={async () => {
+                            try {
+
+                            let {token} = await loginUser( email, password);
+                            localStorage.setItem("token", token);
+                            router.push("/");
+                            
+                            } catch (error) {
+                                setError("Registration failed. Please try again.");
+                            }
+                                    }} className="w-[139px] h-[43px] bg-gradient-to-r from-[#9A9A9A] via-[#635985] to-[#443C68] border border-white rounded-[17px] text-xl text-white">
                                   Log In
                                 </button>
                             </div>
