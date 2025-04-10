@@ -5,7 +5,7 @@ import { IoTimeOutline } from "react-icons/io5";
 import { IoCallOutline } from "react-icons/io5";
 import { IoGlobeOutline } from "react-icons/io5";
 
-export default function LocationModal({ isOpen, onClose, venue }) {
+export default function MarkerModal({ isOpen, onClose, venue }) {
   if (!isOpen) return null;
 
   return (
