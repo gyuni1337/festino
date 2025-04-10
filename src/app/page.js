@@ -4,6 +4,7 @@ import ColoredText from "@/components/ColoredText";
 import ColorfulButton from "./components/ColorfulButton";
 import Footer from "@/components/Footer";
 import Button from "@/components/Button";
+import EventCard from "./components/EventCard";
 
 export default function Home() {
 
@@ -28,15 +29,11 @@ export default function Home() {
         <div className="mt-16 mb-[20%]">
             <ColoredText text={"Upcoming Events"} size={"md"} />
             <div className="flex mt-20 mx-[-10%] justify-around xl:gap-0 gap-10 flex-wrap">
-                <div className="bg-white w-96 h-96 rounded-lg shadow-lg">
+                
+        <EventCard title="cercino" age="17"/>
+        <EventCard title="hbg c" age="17"/> 
+        <EventCard title="awawd" age="17"/>
 
-                </div>
-                    <div className="bg-white w-96 h-96 rounded-lg shadow-lg">
-
-                </div>
-                    <div className="bg-white w-96 h-96 rounded-lg shadow-lg">
-
-                </div>
             </div>
         </div>
 
