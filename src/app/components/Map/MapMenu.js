@@ -19,7 +19,7 @@ export default function MapMenu() {
         <div className='flex justify-center gap-12 items-center h-full'>
             <div onClick={() => {setIsOpen(true)}} className='flex flex-col transition-all hover:-translate-y-0.5 cursor-pointer items-center'>
                 <IoMdList color='#A491FF' size={50}/>
-                <h1 className='text-white'>My List</h1>
+                <h1 className='text-white'>Filter</h1>
             </div>
               <div className="flex items-center bg-white text-lg text-black px-5 py-1 rounded-xl shadow-md w-[350px] ">
                 <IoSearch className="text-gray-500 mr-2" size={40} />
