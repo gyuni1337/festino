@@ -13,10 +13,14 @@ export default function MapMenu() {
     const [search, setSearch] = useState("");
     const [isOpen, setIsOpen] = useState(false);
 
+    const [foodVisible, setFoodVisible] = useState(true);
+    const [clubsVisible, setClubsVisible] = useState(true);
+    const [pubsVisible, setPubsVisible] = useState(true);
+
 
   return (
-<div className='absolute left-[25%] top-[80%] w-[50%] h-24 rounded-xl bg-darkGray shadow-menuShadow
-                translate-y-16 hover:translate-y-0 hover:bg-black transition-all duration-300 ease-in-out'>
+<div className='absolute left-[25%] top-[85%] w-[50%] h-24 rounded-xl bg-darkGray shadow-menuShadow
+                hover:translate-y-0 translate-y-2 hover:bg-black transition-all duration-300 ease-in-out'>
         <div className='flex justify-center gap-12 items-center h-full'>
             <div onClick={() => {setIsOpen(true)}} className='flex flex-col transition-all hover:-translate-y-0.5 cursor-pointer items-center'>
                 <IoMdList color='#A491FF' size={50}/>
@@ -33,7 +37,7 @@ export default function MapMenu() {
                 />
                 </div>
 
-            <div className='flex flex-col transition-all hover:-translate-y-0.5 gap-1 cursor-pointer items-center'>
+            <div className='flex flex-col opacity-20 transition-all hover:-translate-y-0.5 gap-1 cursor-pointer items-center'>
                 <IoFastFoodOutline color='#A491FF' size={40}/>
                 <h1 className='text-white'>Food</h1>
             </div>

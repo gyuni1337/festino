@@ -44,7 +44,7 @@ export default function Navbar({extras, marginTop, shadow}) {
     return (
         <>
             <div className={`flex justify-around z-[100] relative transition-all bg-darkGray xl:mx-[0%] ${marginTop } ${shadow}`}>
-            <Image src="/lightLogo.png" alt="logo" width="300" height="400" onClick={() => { router.push('/')}} /> 
+            <Image src="/lightLogo.png" className="cursor-pointer" alt="logo" width="300" height="400" onClick={() => { router.push('/')}} /> 
                 <div className="flex items-center">
                     { showMenuButton ? 
                     <div className="flex flex-col items-center">
