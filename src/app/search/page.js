@@ -15,7 +15,7 @@ export default function Page() {
   return (
     <>
       <main className="relative w-full h-screen overflow-hidden">
-      <Navbar shadow={"shadow-navShadow"} />
+      {/* <Navbar shadow={"shadow-navShadow"} /> */}
         <Map />
         <MapMenu />
       </main>

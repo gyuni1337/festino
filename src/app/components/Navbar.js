@@ -58,11 +58,17 @@ export default function Navbar({extras, marginTop, shadow}) {
                              <li>Pubs</li>
                              </>
                             }
+                            {!isAuthenticated ? 
                              <div className="flex gap-5 items-center">
 
                              <Button href="/signin" text="Sign In" />
                              <ColorfulButton href="/signup" text="Sign Up" />
                              </div>
+                             // TODO : create the signed in navbar with profile
+                            : <div>
+                                
+                                </div>
+                            }
                          </ul>
                      
             }
