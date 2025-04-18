@@ -8,7 +8,7 @@ import "leaflet/dist/leaflet.css";
 import ListModal from '@/components/ListModal';
 
 const Map = dynamic(() => import("@/components/Map/MapComponent"), { ssr: false });
-import MapMenu from '@/components/Map/MapMenu';
+import MapMenu from '@/components/Map/Menu/MapMenu';
 
 export default function Page() {
 

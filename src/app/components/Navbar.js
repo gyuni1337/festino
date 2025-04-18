@@ -15,7 +15,6 @@ export default function Navbar({extras, marginTop, shadow}) {
     let [showMenuButton, setShowMenuButton] = useState(false);
     let [menuState, setMenuState] = useState(false);
     const isAuthenticated = useAuth(); // Custom hook to check authentication status
-
     const router = useRouter();
 
 
