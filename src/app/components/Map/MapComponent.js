@@ -12,7 +12,7 @@ export default function MapComponent() {
 const { clubs, foods, pubs, loading, error, showClubs, showPubs, showFoods } = useVenues();
   
   return (
-    <MapContainer center={[56.043435668784134, 12.695556265645147]} minZoom={17} maxZoom={19} zoom={17} className="absolute top-0 left-0 h-full z-0 w-full">
+    <MapContainer center={[56.043435668784134, 12.695556265645147]} minZoom={17} maxZoom={18} zoom={17} className="absolute top-0 left-0 h-full z-0 w-full">
       <TileLayer url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png" />
 
       {showClubs && clubs.map(club => (
