@@ -4,7 +4,6 @@ import { IoFastFoodOutline } from "react-icons/io5";
 import { PiDiscoBallFill } from "react-icons/pi";
 import { IoBeer } from "react-icons/io5";
 import { FaF, FaFilter } from "react-icons/fa6";
-import ListModal from '@/components/ListModal';
 import { IoSearch } from "react-icons/io5";
 import { BiParty } from "react-icons/bi";
 import { DashboardModal } from '@/components/Map/Dashboard/DashboardModal';
@@ -57,7 +56,6 @@ export default function MapMenu() {
             </div> */}
 
         </div>
-        {/* <ListModal isOpen={isOpen} onClose={() => setIsOpen(false)} /> */}
           <DashboardModal open={dashboardOpen} onOpenChange={setDashboardOpen} />
     </div>
   )
