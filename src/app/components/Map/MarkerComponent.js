@@ -17,23 +17,20 @@ const createCustomIcon = (title, type, imglink) => {
   });
 }
 
-export default function MarkerComponent({position, title, type, onClick, venueData, imglink }) {
+export default function MarkerComponent({position, title, type, onClick, venueData }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   function handleClick() {
     setIsModalOpen(true);
     if (onClick) onClick();
   }
-  
-  useEffect(() => {
-    console.log(imglink);
-  }, []);
+
 
   return (
     <>
       <Marker 
         position={position} 
-        icon={createCustomIcon(title, type, imglink)} 
+        icon={createCustomIcon(title, type, venueData.imglink)} 
         eventHandlers={{ click: handleClick }}
       />
 
