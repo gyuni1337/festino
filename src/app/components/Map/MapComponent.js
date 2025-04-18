@@ -10,19 +10,10 @@ import MarkerComponent from "@/components/Map/MarkerComponent";
 export default function MapComponent() {
 
 const { clubs, foods, pubs, loading, error, showClubs, showPubs, showFoods } = useVenues();
-
-  useEffect(() => {
-   console.log(clubs); 
-  })
   
   return (
-    <MapContainer center={[56.043435668784134, 12.695556265645147]} zoom={17} className="absolute top-0 left-0 h-full z-0 w-full">
+    <MapContainer center={[56.043435668784134, 12.695556265645147]} minZoom={17} maxZoom={19} zoom={17} className="absolute top-0 left-0 h-full z-0 w-full">
       <TileLayer url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png" />
-
-        {/* {markers.map((marker, index) => (
-          <MarkerComponent key={index} title={marker.name} type={marker.type} imglink={marker.images[0]} position={[marker.coordinates[0], marker.coordinates[1]]} /> 
-        ))}
-     */}
 
       {showClubs && clubs.map(club => (
           <MarkerComponent
@@ -60,7 +51,7 @@ const { clubs, foods, pubs, loading, error, showClubs, showPubs, showFoods } = u
             }}
           />
         )}
-        
+
         {showFoods && foods.map(food =>
           <MarkerComponent
             key={food._id}
