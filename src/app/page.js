@@ -10,6 +10,7 @@ import EventsModal from "./components/EventsModal";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
 
   return (
 
@@ -44,7 +45,7 @@ export default function Home() {
             >
               See More Events
             </button>
-          </div>
+         </div>
         </div>
       </main>
       <Footer />

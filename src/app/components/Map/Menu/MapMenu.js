@@ -16,7 +16,7 @@ export default function MapMenu() {
     const { showClubs, setShowClubs, showPubs, setShowPubs, showFoods, setShowFoods } = useVenues();
 
   return (
-<div className='absolute left-[30%] top-[85%] w-[40%] h-24 rounded-xl bg-darkGray shadow-menuShadow
+<div className='absolute left-[30%] top-[85%] px-5 w-[45%] h-24 rounded-xl bg-darkGray shadow-menuShadow
                 hover:shadow-menuHovered hover:bg-black transition-all duration-300 ease-in-out'>
         <div className='flex justify-center gap-12 items-center h-full'>
             <div onClick={() => {setDashboardOpen(true)}} className='flex flex-col transition-all hover:-translate-y-0.5 cursor-pointer items-center'>

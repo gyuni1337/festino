@@ -12,7 +12,7 @@ export default function MapComponent() {
 const { clubs, foods, pubs, loading, error, showClubs, showPubs, showFoods } = useVenues();
   
   return (
-    <MapContainer center={[56.043435668784134, 12.695556265645147]} minZoom={17} maxZoom={18} zoom={17} className="absolute top-0 left-0 h-full z-0 w-full">
+    <MapContainer center={[56.043435668784134, 12.695556265645147]} minZoom={15} maxZoom={18} zoom={17} className="absolute top-0 left-0 h-full z-0 w-full">
       <TileLayer url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png" />
 
       {showClubs && clubs.map(club => (
@@ -28,6 +28,8 @@ const { clubs, foods, pubs, loading, error, showClubs, showPubs, showFoods } = u
               phone: club.phone,
               website: club.website,
               image: club.images[0] || null,
+            rating: club.rating,
+            desc: club.description,
               imglink: club.images[0]
             }}
           />
@@ -46,6 +48,8 @@ const { clubs, foods, pubs, loading, error, showClubs, showPubs, showFoods } = u
               phone: pub.phone,
               website: pub.website,
               image: pub.images[0] || null,
+            rating: pub.rating,
+            desc: pub.description,
               imglink: pub.images[0]
 
             }}
@@ -65,6 +69,8 @@ const { clubs, foods, pubs, loading, error, showClubs, showPubs, showFoods } = u
               phone: food.phone,
               website: food.website,
               image: food.images[0] || null,
+            rating: food.rating,
+            desc: food.description,
               imglink: food.images[0]
             }}
           />
