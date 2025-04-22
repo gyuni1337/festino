@@ -6,14 +6,22 @@ import { useState, useEffect, use } from "react";
 import ColorfulButton from "./ColorfulButton";
 import { IoMenu } from "react-icons/io5";
 import Button from "./Button";
+import { useRouter } from "next/navigation";
+import useAuth from "@/utils/useAuth";
 
 
 export default function Navbar({extras, marginTop, shadow}) {
 
     let [showMenuButton, setShowMenuButton] = useState(false);
     let [menuState, setMenuState] = useState(false);
+    const isAuthenticated = useAuth(); // Custom hook to check authentication status
+    const router = useRouter();
+
 
   useEffect(() => {
+
+        if(!isAuthenticated) { console.log(' not logged in ')};
+
         if (typeof window === "undefined") return; // Ensure it only runs in the browser
 
         const handleResize = () => {
@@ -35,7 +43,7 @@ export default function Navbar({extras, marginTop, shadow}) {
     return (
         <>
             <div className={`flex justify-around z-[100] relative transition-all bg-darkGray xl:mx-[0%] ${marginTop } ${shadow}`}>
-            <Image src="/lightLogo.png" alt="logo" width="300" height="400" />
+            <Image src="/lightLogo.png" className="cursor-pointer" alt="logo" width="300" height="400" onClick={() => { router.push('/')}} /> 
                 <div className="flex items-center">
                     { showMenuButton ? 
                     <div className="flex flex-col items-center">
@@ -50,11 +58,17 @@ export default function Navbar({extras, marginTop, shadow}) {
                              <li>Pubs</li>
                              </>
                             }
+                            {!isAuthenticated ? 
                              <div className="flex gap-5 items-center">
 
                              <Button href="/signin" text="Sign In" />
                              <ColorfulButton href="/signup" text="Sign Up" />
                              </div>
+                             // TODO : create the signed in navbar with profile
+                            : <div>
+                                
+                                </div>
+                            }
                          </ul>
                      
             }

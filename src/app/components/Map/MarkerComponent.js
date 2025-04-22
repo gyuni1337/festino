@@ -5,7 +5,8 @@ import MarkerModal from './MarkerModal';
 
 const createCustomIcon = (title, type, imglink) => {
 
-  const iconUrl = imglink != "" ? imglink : "/" + type + ".png";
+  // TODO : add pub and club image/icon bc there is none in public folder
+  const iconUrl = imglink != undefined && imglink != "" ? imglink : "/" + type.toLowerCase() + ".png";
   return L.divIcon({
     className: 'custom-icon',
     html: `<div style='display:flex; flex-direction: column; align-items: center; position: relative; text-align: center;'>
@@ -17,23 +18,20 @@ const createCustomIcon = (title, type, imglink) => {
   });
 }
 
-export default function MarkerComponent({position, title, type, onClick, venueData, imglink }) {
+export default function MarkerComponent({position, title, type, onClick, venueData }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   function handleClick() {
     setIsModalOpen(true);
     if (onClick) onClick();
   }
-  
-  useEffect(() => {
-    console.log(imglink);
-  }, []);
+
 
   return (
     <>
       <Marker 
         position={position} 
-        icon={createCustomIcon(title, type, imglink)} 
+        icon={createCustomIcon(title, venueData.type, venueData.imglink)} 
         eventHandlers={{ click: handleClick }}
       />
 

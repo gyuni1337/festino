@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 
 export async function POST(request) {
   try {
-    const { email, password, action } = await request.json();
+    const { username, email, password, action } = await request.json();
     const client = await clientPromise;
     const db = client.db("festino");
     const users = db.collection("users");
@@ -25,9 +25,11 @@ export async function POST(request) {
 
       // Create new user
       const result = await users.insertOne({
+        username,
         email,
         password: hashedPassword,
         createdAt: new Date(),
+        favorites: []
       });
 
       // Generate JWT token
