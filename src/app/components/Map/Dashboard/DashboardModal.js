@@ -1,114 +1,21 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Calendar, Coffee, Music, Search, Utensils, X } from "lucide-react"
-import { Dialog, DialogContent, DialogOverlay } from "@/components/Map/Dashboard/Dialog"
+import { Dialog, DialogContent, DialogOverlay, DialogTitle } from "@/components/Map/Dashboard/Dialog"
 import { ScrollArea } from "@/components/Map/Dashboard/ScrollArea"
-
-// Sample data for venues
-const venues = [
-  {
-    id: 1,
-    name: "The Jazz Club",
-    description: "Live jazz music every night with great cocktails",
-    type: "club",
-    tags: ["live music", "cocktails", "jazz"],
-    rating: 4.5,
-  },
-  {
-    id: 2,
-    name: "The Local Pub",
-    description: "Traditional pub with a great selection of beers",
-    type: "pub",
-    tags: ["beer", "traditional", "sports"],
-    rating: 4.2,
-  },
-  {
-    id: 3,
-    name: "Gourmet Bistro",
-    description: "Fine dining with a seasonal menu",
-    type: "food",
-    tags: ["fine dining", "wine", "romantic"],
-    rating: 4.8,
-  },
-  {
-    id: 4,
-    name: "Techno Warehouse",
-    description: "Electronic music venue with international DJs",
-    type: "club",
-    tags: ["electronic", "dancing", "late night"],
-    rating: 4.3,
-  },
-  {
-    id: 5,
-    name: "Street Food Market",
-    description: "Various food stalls with international cuisine",
-    type: "food",
-    tags: ["casual", "international", "takeaway"],
-    rating: 4.1,
-  },
-  {
-    id: 6,
-    name: "Sports Bar",
-    description: "Watch all major sports events with great atmosphere",
-    type: "pub",
-    tags: ["sports", "beer", "burgers"],
-    rating: 4.0,
-  },
-]
-
-// Restructured filter categories with main categories and tags
-const filterCategories = [
-  {
-    id: "club",
-    name: "Clubs",
-    icon: <Music className="h-5 w-5" />,
-    tags: [
-      { id: "live-music", label: "Live Music" },
-      { id: "dancing", label: "Dancing" },
-      { id: "dj", label: "DJ Performances" },
-      { id: "electronic", label: "Electronic" },
-      { id: "jazz", label: "Jazz" },
-      { id: "late-night", label: "Late Night" },
-      { id: "cocktails", label: "Cocktails" },
-    ],
-  },
-  {
-    id: "pub",
-    name: "Pubs",
-    icon: <Coffee className="h-5 w-5" />,
-    tags: [
-      { id: "sports", label: "Sports Viewing" },
-      { id: "beer", label: "Craft Beer" },
-      { id: "games", label: "Games" },
-      { id: "traditional", label: "Traditional" },
-      { id: "live-sports", label: "Live Sports" },
-      { id: "pub-food", label: "Pub Food" },
-      { id: "outdoor-seating", label: "Outdoor Seating" },
-    ],
-  },
-  {
-    id: "food",
-    name: "Food Places",
-    icon: <Utensils className="h-5 w-5" />,
-    tags: [
-      { id: "fine-dining", label: "Fine Dining" },
-      { id: "casual", label: "Casual" },
-      { id: "takeaway", label: "Takeaway" },
-      { id: "international", label: "International" },
-      { id: "romantic", label: "Romantic" },
-      { id: "family-friendly", label: "Family Friendly" },
-      { id: "vegetarian", label: "Vegetarian Options" },
-    ],
-  },
-]
+import { useVenues } from "@/Context/VenueContext"
+import { VisuallyHidden } from "radix-ui"
 
 
 export function DashboardModal({ open, onOpenChange }) {
+
   const [mainFilters, setMainFilters] = useState({})
   const [tagFilters, setTagFilters] = useState({})
   const [searchQuery, setSearchQuery] = useState("")
-
+  const { clubs, pubs, foods } = useVenues();
+  const venues = [...clubs, ...pubs, ...foods];
+  
   const handleMainFilterChange = (id, checked) => {
     setMainFilters((prev) => ({
       ...prev,
@@ -123,6 +30,52 @@ export function DashboardModal({ open, onOpenChange }) {
     }))
   }
 
+
+  const respectiveTags = (venueType) => {
+    let tags = []
+    venueType.map((venue) => {
+      venue.tags.map((tag) => {
+        tags.push(tag);
+
+      })
+    })
+
+    const fullTags = [];
+    tags = [...new Set(tags)] 
+    tags.map((tag) => {
+      fullTags.push({id: tag, label: tag});
+
+    })
+    
+    return fullTags;
+
+
+  }
+
+
+  const filterCategories = [
+  {
+    id: "club",
+    name: "Clubs",
+    icon: <Music className="h-5 w-5" />,
+    tags: respectiveTags(clubs) 
+  },
+  {
+    id: "pub",
+    name: "Pubs",
+    icon: <Coffee className="h-5 w-5" />,
+    tags: respectiveTags(pubs)
+  },
+  {
+    id: "food",
+    name: "Food Places",
+    icon: <Utensils className="h-5 w-5" />,
+    tags: respectiveTags(foods)
+  },
+]
+
+
+
   const showUpcomingEvents = () => {
     // This would be implemented to show upcoming events
     console.log("Show upcoming events")
@@ -133,7 +86,7 @@ export function DashboardModal({ open, onOpenChange }) {
     const matchesSearch =
       searchQuery === "" ||
       venue.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      venue.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      venue.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
       venue.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))
 
     // Check if any main filters are selected
@@ -287,11 +240,11 @@ export function DashboardModal({ open, onOpenChange }) {
                             {venue.type === "food" && <Utensils className="h-4 w-4 text-primary" />}
                           </div>
                         </div>
-                        <p className="text-sm text-graytext mb-3">{venue.description}</p>
+                        <p className="text-sm text-graytext mb-3">{venue.desc}</p>
                         <div className="flex flex-wrap gap-2 mb-3">
-                          {venue.tags.map((tag) => (
+                          {venue.tags.map((tag, index) => (
                             <span
-                              key={tag}
+                              key={`${tag}-${index}`}
                               className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-darkGray text-graytext border border-primary/20"
                             >
                               {tag}

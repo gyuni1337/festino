@@ -72,7 +72,7 @@ export default function MarkerModal({ venue, onClose, isOpen = false }) {
         {/* Header */}
         <div className="flex items-center gap-4 pb-4">
           <div className="relative h-16 w-16 overflow-hidden rounded-md border border-[#A491FF]/30">
-            <Image
+            <img
               src={venue.imglink || "/heat.jpg"}
               alt={`${venue.name} logo`}
               fill="true"
@@ -125,10 +125,10 @@ export default function MarkerModal({ venue, onClose, isOpen = false }) {
       className="relative aspect-video overflow-hidden rounded-md border border-[#A491FF]/30"
     >
 
-      <Image
+      <img
         src={image || `/food.png`}
         alt={`${venue.name || 'Venue'} showcase ${index + 1}`}
-        fill
+        fill="true"
         className="object-cover transition-transform hover:scale-105"
       />
     </div>
@@ -192,7 +192,7 @@ export default function MarkerModal({ venue, onClose, isOpen = false }) {
           {venue.openingHours && (
             <div className="text-sm">
               <span className="font-medium text-[#E5E5E5]">Hours:</span>{" "}
-              <span className="text-[#ABABAB]">{venue.openingHours}</span>
+              <span className="text-[#ABABAB]">{venue.openingHours[0] + " " + venue.openingHours[1] + "-" + venue.openingHours[2] }</span>
             </div>
           )}
         </div>

@@ -17,7 +17,7 @@ export default function Page() {
             email,
             password,
             });
-            return response.data; // You should store the token somewhere like localStorage or context
+            return response.data; 
         } catch (error) {
             console.error("Login Error:", error);
             throw new Error("Login failed");

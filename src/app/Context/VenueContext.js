@@ -16,8 +16,6 @@ export function VenueProvider({ children }) {
   const [showClubs, setShowClubs] = useState(true);
   const [showPubs, setShowPubs] = useState(true);
 
-  // TODO : connect this with the dashboard 
-
   useEffect(() => {
     const fetchVenues = async () => {
       try {
