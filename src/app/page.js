@@ -34,12 +34,12 @@ export default function Home() {
         
         <div className="mt-16 mb-[20%]">
           <ColoredText text={"Featured Events"} size={"md"} />
-          <div className="flex mt-20 mx-[-10%] justify-around xl:gap-0 gap-10 flex-wrap">
+          <div className="flex mt-20 mx-[-20%] justify-around flex-wrap">
             <EventCard title="Klubb 1" />
             <EventCard title="Klubb 2" />
             <EventCard title="Klubb 3" />
           </div>
-          <div className="flex justify-center mt-12">
+          <div className="flex justify-center mt-12 gap-4">
             <button
               onClick={() => setIsModalOpen(true)}
               className="px-10 py-2 rounded-xl bg-gradient-to-r from-[#9A9A9A] via-[#635985] to-[#443C68] text-white hover:opacity-90 transition-opacity"
@@ -47,7 +47,13 @@ export default function Home() {
               See More Events
             </button>
          </div>
-        </div>
+            <a
+              href="/search"
+              className="px-10 py-2 rounded-xl bg-gradient-to-r from-[#9A9A9A] via-[#635985] to-[#443C68] text-white hover:opacity-90 transition-opacity"
+            >
+              Explore
+            </a>
+          </div>
       </main>
       <Footer />
       <EventsModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
