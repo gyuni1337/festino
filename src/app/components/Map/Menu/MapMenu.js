@@ -11,10 +11,10 @@ import { useVenues } from '@/Context/VenueContext';
 
 export default function MapMenu() {
 
-    const [search, setSearch] = useState("");
     const [dashboardOpen, setDashboardOpen] = useState(false);
-    const { showClubs, setShowClubs, showPubs, setShowPubs, showFoods, setShowFoods } = useVenues();
+    const { showClubs, setShowClubs, showPubs, setShowPubs, showFoods, setShowFoods, searchQuery, setSearchQuery } = useVenues();
 
+    
   return (
 <div className='absolute left-[30%] top-[85%] px-5 w-[45%] h-24 rounded-xl bg-darkGray shadow-menuShadow
                 hover:shadow-menuHovered hover:bg-black transition-all duration-300 ease-in-out'>
@@ -29,8 +29,8 @@ export default function MapMenu() {
                     type="text"
                     placeholder="Search..."
                     className="w-full outline-none bg-transparent"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                 />
                 </div>
 

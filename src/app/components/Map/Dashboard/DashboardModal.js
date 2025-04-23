@@ -155,7 +155,7 @@ export function DashboardModal({ open, onOpenChange }) {
 
                       <div className="ml-8 space-y-2 border-l-2 border-primary/20 pl-3">
                         {category.tags.map((tag) => (
-                          <div key={tag.id} className="flex items-center space-x-2">
+                          <div key={`${category.id}-${tag.id}`} className="flex items-center space-x-2">
                             <div className="relative flex items-center">
                               <input
                                 type="checkbox"
@@ -229,8 +229,8 @@ export function DashboardModal({ open, onOpenChange }) {
             <ScrollArea className="flex-1 p-4">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filteredVenues.length > 0 ? (
-                  filteredVenues.map((venue) => (
-                    <div key={venue.id} className="rounded-lg border border-footerbg bg-footerbg overflow-hidden">
+                  filteredVenues.map((venue, id) => (
+                    <div key={id} className="rounded-lg border border-footerbg bg-footerbg overflow-hidden">
                       <div className="p-4">
                         <div className="flex items-center justify-between mb-2">
                           <h3 className="text-lg font-medium text-text">{venue.name}</h3>

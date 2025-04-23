@@ -78,8 +78,8 @@ export default function MarkerModal({ venue, onClose, isOpen = false }) {
               fill="true"
               className="object-cover"
             />
-            {console.log(venue)}
           </div>
+          {console.log(venue)}
           <div className="flex flex-col">
             <h2 className="text-xl font-semibold text-white">{venue.name}</h2>
             <div className="flex items-center gap-2 pt-1">
@@ -137,7 +137,7 @@ export default function MarkerModal({ venue, onClose, isOpen = false }) {
 
         {/* Content */}
         <div className="space-y-3 pt-2">
-          <p className="text-sm text-[#ABABAB]">{venue.description}</p>
+          <p className="text-sm text-[#ABABAB]">{venue.desc}</p>
 
           <div className="flex flex-wrap gap-2">
             {venue.tags &&

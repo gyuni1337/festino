@@ -10,6 +10,7 @@ import EventsModal from "./components/EventsModal";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   
 
   return (
