@@ -10,11 +10,13 @@ import { VisuallyHidden } from "radix-ui"
 
 export function DashboardModal({ open, onOpenChange }) {
 
+
   const [mainFilters, setMainFilters] = useState({})
   const [tagFilters, setTagFilters] = useState({})
-  const [searchQuery, setSearchQuery] = useState("")
+  const {searchQuery, setSearchQuery} = useVenues();
   const { clubs, pubs, foods } = useVenues();
   const venues = [...clubs, ...pubs, ...foods];
+
   
   const handleMainFilterChange = (id, checked) => {
     setMainFilters((prev) => ({

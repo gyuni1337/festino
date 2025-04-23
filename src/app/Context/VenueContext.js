@@ -61,6 +61,10 @@ const filteredFoods = foods.filter((food) =>
   food.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
 );
 
+  function resetSearch() {
+    setSearchQuery("");
+  }
+
   const value = {
     clubs: filteredClubs,
     showClubs,
@@ -74,6 +78,7 @@ const filteredFoods = foods.filter((food) =>
     pubs: filteredPubs,
     foods: filteredFoods,
     loading,
+    resetSearch,
     error,
   };
 
