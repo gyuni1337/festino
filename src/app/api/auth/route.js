@@ -135,7 +135,6 @@ const authHeader = req.headers.get('authorization');
   try {
     const decoded = verify(token, process.env.JWT_SECRET);
     const { fullName, username, email, profilePicture } = await req.json();
-    console.log('Decoded token:', decoded);
 
 if (!ObjectId.isValid(decoded.userId)) {
   return NextResponse.json({ message: 'Invalid user ID in token' }, { status: 400 });

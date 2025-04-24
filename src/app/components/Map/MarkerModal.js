@@ -79,7 +79,6 @@ export default function MarkerModal({ venue, onClose, isOpen = false }) {
               className="object-cover"
             />
           </div>
-          {console.log(venue)}
           <div className="flex flex-col">
             <h2 className="text-xl font-semibold text-white">{venue.name}</h2>
             <div className="flex items-center gap-2 pt-1">
