@@ -77,10 +77,9 @@ export function DashboardModal({ open, onOpenChange }) {
 ]
 
 
-
-  const showUpcomingEvents = () => {
+  const showFavorites = () => {
     // This would be implemented to show upcoming events
-    console.log("Show upcoming events")
+    
   }
 
   const filteredVenues = venues.filter((venue) => {
@@ -191,10 +190,10 @@ export function DashboardModal({ open, onOpenChange }) {
               <div className="h-px w-full bg-footerbg my-4" />
               <button
                 className="w-full py-2 px-4 rounded bg-footerbg hover:bg-footerbg/80 text-text border border-primary/30 flex items-center justify-center transition-colors"
-                onClick={showUpcomingEvents}
+                onClick={showFavorites}
               >
                 <Calendar className="mr-2 h-4 w-4 text-primary" />
-                Show Upcoming Events
+                Show favorites
               </button>
             </div>
           </div>
@@ -278,10 +277,10 @@ export function DashboardModal({ open, onOpenChange }) {
             <div className="md:hidden p-4 border-t border-footerbg">
               <button
                 className="w-full py-2 px-4 rounded bg-primary hover:bg-primary/90 text-darkGray font-medium flex items-center justify-center transition-colors"
-                onClick={showUpcomingEvents}
+                onClick={showFavorites}
               >
                 <Calendar className="mr-2 h-4 w-4" />
-                Show Upcoming Events
+                Show Favorites
               </button>
             </div>
           </div>
