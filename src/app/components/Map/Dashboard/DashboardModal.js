@@ -2,21 +2,49 @@
 
 import { useState, useEffect } from "react"
 import { Calendar, Coffee, Music, Search, Utensils, X } from "lucide-react"
-import { Dialog, DialogContent, DialogOverlay, DialogTitle } from "@/components/Map/Dashboard/Dialog"
+import { Dialog, DialogContent, DialogDescription, DialogOverlay, DialogTitle } from "@/components/Map/Dashboard/Dialog"
 import { ScrollArea } from "@/components/Map/Dashboard/ScrollArea"
 import { useVenues } from "@/Context/VenueContext"
 import { VisuallyHidden } from "radix-ui"
+import useAuth from "@/utils/useAuth"
+import axiosInstance from "@/utils/axios"
 
+
+export const getUserInfo = async () => {
+  try {
+    const res = await axiosInstance.get('/auth');
+    return res.data.user; 
+  } catch (error) {
+    console.error("Failed to fetch user info:", error);
+    return null;
+  }
+};
 
 export function DashboardModal({ open, onOpenChange }) {
 
 
   const [mainFilters, setMainFilters] = useState({})
   const [tagFilters, setTagFilters] = useState({})
+  const [showingFavorites, setShowingFavorites] = useState(false)
+  const [ favorites, setFavorites ] = useState();
   const {searchQuery, setSearchQuery} = useVenues();
   const { clubs, pubs, foods } = useVenues();
+  const isAuthenticated = useAuth();
   const venues = [...clubs, ...pubs, ...foods];
 
+  useEffect(() => {
+    const getInfo = async () => {
+      const res = await getUserInfo();
+      setFavorites(res.favorites);
+    };
+
+    if (!isAuthenticated) {
+      console.log("Not logged in");
+    } else {
+      getInfo();
+    }
+
+  }, [isAuthenticated])
   
   const handleMainFilterChange = (id, checked) => {
     setMainFilters((prev) => ({
@@ -54,7 +82,6 @@ export function DashboardModal({ open, onOpenChange }) {
 
   }
 
-
   const filterCategories = [
   {
     id: "club",
@@ -75,12 +102,6 @@ export function DashboardModal({ open, onOpenChange }) {
     tags: respectiveTags(foods)
   },
 ]
-
-
-  const showFavorites = () => {
-    // This would be implemented to show upcoming events
-    
-  }
 
   const filteredVenues = venues.filter((venue) => {
     // Search by name, description, or tags
@@ -112,6 +133,7 @@ export function DashboardModal({ open, onOpenChange }) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogTitle className="hidden">Venue Dashboard</DialogTitle>
       <DialogOverlay className="bg-black/80" />
       <DialogContent className="max-w-6xl h-[90vh] p-0 gap-0 border-none bg-transparent">
         <div className="flex h-full rounded-lg overflow-hidden bg-darkGray text-text">
@@ -190,10 +212,10 @@ export function DashboardModal({ open, onOpenChange }) {
               <div className="h-px w-full bg-footerbg my-4" />
               <button
                 className="w-full py-2 px-4 rounded bg-footerbg hover:bg-footerbg/80 text-text border border-primary/30 flex items-center justify-center transition-colors"
-                onClick={showFavorites}
+                onClick={() => { setShowingFavorites(!showingFavorites)}}
               >
                 <Calendar className="mr-2 h-4 w-4 text-primary" />
-                Show favorites
+                { showingFavorites ? "Show All" : "Show Favorites"} 
               </button>
             </div>
           </div>
@@ -230,6 +252,8 @@ export function DashboardModal({ open, onOpenChange }) {
             <ScrollArea className="flex-1 p-4">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filteredVenues.length > 0 ? (
+
+                  !showingFavorites ? (
                   filteredVenues.map((venue, id) => (
                     <div key={id} className="rounded-lg border border-footerbg bg-footerbg overflow-hidden">
                       <div className="p-4">
@@ -258,7 +282,37 @@ export function DashboardModal({ open, onOpenChange }) {
                         </div>
                       </div>
                     </div>
-                  ))
+                  )) ) : (
+                  favorites.map((venue, id) => (
+                    <div key={id} className="rounded-lg border border-footerbg bg-footerbg overflow-hidden">
+                      <div className="p-4">
+                        <div className="flex items-center justify-between mb-2">
+                          <h3 className="text-lg font-medium text-text">{venue.name}</h3>
+                          <div>
+                            {venue.type === "club" && <Music className="h-4 w-4 text-primary" />}
+                            {venue.type === "pub" && <Coffee className="h-4 w-4 text-primary" />}
+                            {venue.type === "food" && <Utensils className="h-4 w-4 text-primary" />}
+                          </div>
+                        </div>
+                        <p className="text-sm text-graytext mb-3">{venue.desc}</p>
+                        <div className="flex flex-wrap gap-2 mb-3">
+                          {venue.tags.map((tag, index) => (
+                            <span
+                              key={`${tag}-${index}`}
+                              className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-darkGray text-graytext border border-primary/20"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        <div className="text-sm text-graytext flex items-center">
+                          <span className="text-primary mr-1">★</span>
+                          {venue.rating}/5
+                        </div>
+                      </div>
+                    </div>
+                  )) 
+                  )
                 ) : (
                   <div className="col-span-1 md:col-span-2 lg:col-span-3 flex flex-col items-center justify-center py-12 text-center">
                     <div className="bg-footerbg rounded-full p-4 mb-4">
@@ -273,14 +327,15 @@ export function DashboardModal({ open, onOpenChange }) {
               </div>
             </ScrollArea>
 
+
             {/* Mobile Footer with Events Button */}
             <div className="md:hidden p-4 border-t border-footerbg">
               <button
                 className="w-full py-2 px-4 rounded bg-primary hover:bg-primary/90 text-darkGray font-medium flex items-center justify-center transition-colors"
-                onClick={showFavorites}
+                onClick={() => {setShowingFavorites(!showingFavorites)}}
               >
                 <Calendar className="mr-2 h-4 w-4" />
-                Show Favorites
+                { showingFavorites ? "Show All" : "Show Favorites"} 
               </button>
             </div>
           </div>

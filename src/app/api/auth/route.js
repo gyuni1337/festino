@@ -75,6 +75,27 @@ export async function POST(request) {
       return NextResponse.json({ token });
     }
 
+
+    if( action === "favorite") {
+  const { email, incomingVenue } = await request.json();
+
+    // Fetch user
+    const user = await user.findOne({ email });
+
+    if (!user) {
+        return new Response("User not found", { status: 404 });
+    }
+
+    // Add to favorites if not already there
+    if (!user.favorites.includes(incomingVenue)) {
+        user.favorites.push(incomingVenue);
+        await user.save();
+    }
+
+    return new Response("Venue added to favorites", { status: 200 }); 
+
+    }
+
     return NextResponse.json(
       { error: "Invalid action" },
       { status: 400 }
