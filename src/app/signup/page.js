@@ -57,7 +57,7 @@ const router = useRouter();
                                     <label className="text-xl text-white font-normal" aria-required>Username</label>
                                     <input
                                         type="text"
-                                        className="w-[329px] h-[38px] bg-[#D0D0D0] border-2 border-white rounded-[14px] px-4 text-lg"
+                                        className="w-[329px] h-[38px] bg-[#D0D0D0] border-2 border-white rounded-[14px] px-4 text-lg text-black"
                                         placeholder="Begin typing here.."
                                         onChange={(e) => setUsername(e.target.value)}
                                     />
@@ -76,7 +76,7 @@ const router = useRouter();
                                     <label className="text-xl text-white font-normal" aria-required>Email</label>
                                     <input
                                         type="email"
-                                        className="w-[329px] h-[38px] bg-[#D0D0D0] border-2 border-white rounded-[14px] px-4 text-lg"
+                                        className="w-[329px] h-[38px] bg-[#D0D0D0] border-2 border-white rounded-[14px] px-4 text-lg text-black"
                                         placeholder="Begin typing here.."
                                         onChange={(e) => setEmail(e.target.value)}
                                     />

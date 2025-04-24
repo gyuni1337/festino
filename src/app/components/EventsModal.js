@@ -6,37 +6,37 @@ export default function EventsModal({ isOpen, onClose }) {
   const moreEvents = [
     {
       title: "Klubb 4",
-      image: "/pulse.jpg",
+      image: "https://via.placeholder.com/300x200?text=Klubb+4",
       date: "April 5, 2024",
       location: "Stockholm"
     },
     {
       title: "Klubb 5",
-      image: "/nova.jpg",
+      image: "https://via.placeholder.com/300x200?text=Klubb+5",
       date: "April 12, 2024",
       location: "Gothenburg"
     },
     {
       title: "Klubb 6",
-      image: "/eclipse.jpg",
+      image: "https://via.placeholder.com/300x200?text=Klubb+6",
       date: "April 19, 2024",
       location: "Malmö"
     },
     {
       title: "Klubb 7",
-      image: "/aurora.jpg",
+      image: "https://via.placeholder.com/300x200?text=Klubb+7",
       date: "April 26, 2024",
       location: "Stockholm"
     },
     {
       title: "Klubb 8",
-      image: "/zenith.jpg",
+      image: "https://via.placeholder.com/300x200?text=Klubb+8",
       date: "May 3, 2024",
       location: "Gothenburg"
     },
     {
       title: "Klubb 9",
-      image: "/vortex.jpg",
+      image: "https://via.placeholder.com/300x200?text=Klubb+9",
       date: "May 10, 2024",
       location: "Malmö"
     }
@@ -46,7 +46,7 @@ export default function EventsModal({ isOpen, onClose }) {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4">
-      <div className="bg-[#141313] rounded-[37px] p-8 max-w-6xl w-full max-h-[90vh] overflow-y-auto relative border-4 border-[#443C68] shadow-[0_5px_9.2px_#635985]">
+      <div className="bg-[#141313] rounded-[37px] p-8 max-w-6xl w-full max-h-[90vh] overflow-y-auto relative border-4 border-[#443C68] shadow-[0_5px_9.2px_#635985] scrollbar-hide">
         <button
           onClick={onClose}
           className="absolute top-6 right-6 text-white text-3xl hover:text-[#635985] transition-colors duration-300"
@@ -54,7 +54,7 @@ export default function EventsModal({ isOpen, onClose }) {
           ×
         </button>
         
-        <h2 className="text-3xl font-normal text-transparent bg-clip-text bg-gradient-to-r from-white to-[#635985] mb-12">
+        <h2 className="text-3xl font-normal text-transparent bg-clip-text bg-gradient-to-r from-[#443C68] to-white mb-12">
           All Events
         </h2>
         
@@ -68,4 +68,4 @@ export default function EventsModal({ isOpen, onClose }) {
       </div>
     </div>
   );
-} 
+}
