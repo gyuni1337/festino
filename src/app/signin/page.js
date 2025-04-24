@@ -42,7 +42,7 @@ export default function Page() {
                                     <label className="text-xl text-white font-normal">Email</label>
                                     <input
                                         type="email"
-                                        className="w-[329px] h-[38px] bg-[#D0D0D0] border-2 border-white rounded-[14px] px-4 text-lg"
+                                        className="w-[329px] h-[38px] bg-[#D0D0D0] border-2 border-white rounded-[14px] px-4 text-lg text-black"
                                         onChange={(e) => setEmail(e.target.value)}
                                         placeholder="Begin typing here.."
                                     />
@@ -52,7 +52,7 @@ export default function Page() {
                                     <label className="text-xl text-[#969696] font-normal">Password</label>
                                     <input
                                         type="password"
-                                        className="w-[329px] h-[38px] border-2 border-white rounded-[14px] px-4 text-lg bg-transparent"
+                                        className="w-[329px] h-[38px] border-2 border-white rounded-[14px] px-4 text-lg bg-transparent "
                                         onChange={(e) => setPassword(e.target.value)}
                                         placeholder="Begin typing here.."
                                     />
