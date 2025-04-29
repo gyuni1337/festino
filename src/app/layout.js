@@ -1,5 +1,5 @@
 import "./globals.css";
-import { inter, roboto } from "./fonts";
+import { inter, Roboto } from "./fonts";
 import { VenueProvider } from "./Context/VenueContext";
 
 export const metadata = {
@@ -11,8 +11,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-      // TODO : maybe change font 
-        className={`${inter.className} antialiased`}
       >
         <VenueProvider>
           {children}

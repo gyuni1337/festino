@@ -11,6 +11,8 @@ import EventsModal from "./components/EventsModal";
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  
+
   return (
     <>
       <Navbar marginTop={"mt-10"}/>
@@ -36,7 +38,7 @@ export default function Home() {
             <EventCard title="Heat" />
             <EventCard title="Sirocco" />
           </div>
-          <div className="flex justify-center mt-12 gap-4">
+          <div className="flex justify-center mt-12 gap-4 items-center">
             <button
               onClick={() => setIsModalOpen(true)}
               className="px-10 py-2 rounded-xl bg-gradient-to-r from-[#9A9A9A] via-[#635985] to-[#443C68] text-white hover:opacity-90 transition-opacity"

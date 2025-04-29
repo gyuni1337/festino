@@ -15,8 +15,7 @@ export function VenueProvider({ children }) {
   const [showFoods, setShowFoods] = useState(false);
   const [showClubs, setShowClubs] = useState(true);
   const [showPubs, setShowPubs] = useState(true);
-
-  // TODO : connect this with the dashboard 
+  const [searchQuery, setSearchQuery ] = useState("");
 
   useEffect(() => {
     const fetchVenues = async () => {
@@ -44,37 +43,43 @@ export function VenueProvider({ children }) {
     fetchVenues();
   }, []);
 
+const filteredClubs = clubs.filter((club) =>
+  club.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  club.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  club.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+);
+
+const filteredPubs = pubs.filter((pub) =>
+  pub.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  pub.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  pub.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+);
+
+const filteredFoods = foods.filter((food) =>
+  food.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  food.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  food.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+);
+
+  function resetSearch() {
+    setSearchQuery("");
+  }
+
   const value = {
-    clubs,
+    clubs: filteredClubs,
     showClubs,
     setShowClubs,
     showFoods,
     setShowFoods,
     showPubs,
     setShowPubs,
-    pubs,
-    foods,
+    searchQuery,
+    setSearchQuery,
+    pubs: filteredPubs,
+    foods: filteredFoods,
     loading,
+    resetSearch,
     error,
-    refreshData: async () => {
-      setLoading(true);
-      try {
-        const [clubsResponse, pubsResponse, foodsResponse] = await Promise.all([
-          axios.get('/clubs'),
-          axios.get('/pubs'),
-          axios.get('/foods')
-        ]);
-        
-        setClubs(clubsResponse.data);
-        setFoods(foodsResponse.data); 
-        setPubs(pubsResponse.data);
-        setError(null);
-      } catch (err) {
-        setError('Failed to refresh venue data');
-      } finally {
-        setLoading(false);
-      }
-    }
   };
 
   return (

@@ -11,15 +11,21 @@ import { useVenues } from '@/Context/VenueContext';
 
 export default function MapMenu() {
 
-    const [search, setSearch] = useState("");
     const [dashboardOpen, setDashboardOpen] = useState(false);
-    const { showClubs, setShowClubs, showPubs, setShowPubs, showFoods, setShowFoods } = useVenues();
+  const { resetSearch } = useVenues();
+    const { showClubs, setShowClubs, showPubs, setShowPubs, showFoods, setShowFoods, searchQuery, setSearchQuery } = useVenues();
 
+  function handleDashboard() {
+    resetSearch();  
+    setDashboardOpen(true);
+  }
+
+    
   return (
-<div className='absolute left-[30%] top-[85%] w-[40%] h-24 rounded-xl bg-darkGray shadow-menuShadow
+<div className='absolute left-[30%] top-[85%] px-5 w-[45%] h-24 rounded-xl bg-darkGray shadow-menuShadow
                 hover:shadow-menuHovered hover:bg-black transition-all duration-300 ease-in-out'>
         <div className='flex justify-center gap-12 items-center h-full'>
-            <div onClick={() => {setDashboardOpen(true)}} className='flex flex-col transition-all hover:-translate-y-0.5 cursor-pointer items-center'>
+            <div onClick={handleDashboard} className='flex flex-col transition-all hover:-translate-y-0.5 cursor-pointer items-center'>
                 <IoMdList color='#A491FF' size={50}/>
                 <h1 className='text-white'>Dashboard</h1>
             </div>
@@ -29,8 +35,8 @@ export default function MapMenu() {
                     type="text"
                     placeholder="Search..."
                     className="w-full outline-none bg-transparent"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                 />
                 </div>
 

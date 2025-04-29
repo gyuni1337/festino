@@ -3,16 +3,20 @@
 import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import axiosInstance from "@/utils/axios";
 import { useVenues } from "@/Context/VenueContext";
-
 import MarkerComponent from "@/components/Map/MarkerComponent";
 export default function MapComponent() {
 
-const { clubs, foods, pubs, loading, error, showClubs, showPubs, showFoods } = useVenues();
+const { clubs, foods, pubs, loading, error, showClubs, showPubs, showFoods, searchQuery } = useVenues();
+
+
+  const handleSearch = () => {
+         
+  }
+
   
   return (
-    <MapContainer center={[56.043435668784134, 12.695556265645147]} minZoom={17} maxZoom={18} zoom={17} className="absolute top-0 left-0 h-full z-0 w-full">
+    <MapContainer center={[56.043435668784134, 12.695556265645147]} minZoom={15} maxZoom={18} zoom={17} className="absolute top-0 left-0 h-full z-0 w-full">
       <TileLayer url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png" />
 
       {showClubs && clubs.map(club => (
@@ -24,10 +28,12 @@ const { clubs, foods, pubs, loading, error, showClubs, showPubs, showFoods } = u
               name: club.name,
               type: "Club",
               address: club.address,
-              hours: club.openhours[0] + " | " + club.openhours[1] + "-" + club.openhours[2],
-              phone: club.phone,
-              website: club.website,
-              image: club.images[0] || null,
+              website: club.website || "www.google.com",
+              image: club.images || null,
+            rating: club.rating,
+            openingHours: club.openhours,
+            tags: club.tags,
+            desc: club.description,
               imglink: club.images[0]
             }}
           />
@@ -42,10 +48,12 @@ const { clubs, foods, pubs, loading, error, showClubs, showPubs, showFoods } = u
               name: pub.name,
               type: "Pub",
               address: pub.address, 
-              hours: pub.openhours[0] + " | " + pub.openhours[1] + "-" + pub.openhours[2],
-              phone: pub.phone,
+              openingHours: pub.openhours,
               website: pub.website,
-              image: pub.images[0] || null,
+            tags: pub.tags,
+              image: pub.images || null,
+            rating: pub.rating,
+            desc: pub.description,
               imglink: pub.images[0]
 
             }}
@@ -61,10 +69,12 @@ const { clubs, foods, pubs, loading, error, showClubs, showPubs, showFoods } = u
               name: food.name,
               type: "Food",
               address: food.address,
-              hours: food.openhours[0] + " | " + food.openhours[1] + "-" + food.openhours[2],
-              phone: food.phone,
+              openingHours: food.openhours,
               website: food.website,
-              image: food.images[0] || null,
+              tags: food.tags,
+              image: food.images || null,
+            rating: food.rating,
+            desc: food.description,
               imglink: food.images[0]
             }}
           />

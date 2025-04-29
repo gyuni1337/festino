@@ -20,3 +20,12 @@ body {
   outline: none;
   box-shadow: none;
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Hides the scrollbar in WebKit browsers */
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* Hides the scrollbar in IE and Edge */
+  scrollbar-width: none; /* Hides the scrollbar in Firefox */
+}
