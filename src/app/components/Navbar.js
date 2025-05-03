@@ -92,7 +92,7 @@ export default function Navbar({extras, marginTop, shadow}) {
                              <ColorfulButton href="/signup" text="Sign Up" />
                              </div>
                             : <div>
-                                  <Image src={user.profilePicture || "/defaultPfp.jpg"} alt="Your profile picture" onClick={() => { setShowProfileModal(!showProfileModal)}} className="rounded-2xl" width={50} height={50} />
+                                  <Image src={"/defaultPfp.jpg"} alt="Your profile picture" onClick={() => { setShowProfileModal(!showProfileModal)}} className="rounded-2xl" width={50} height={50} />
                                 </div>
                             }
                          </ul>
