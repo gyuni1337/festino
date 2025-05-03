@@ -13,9 +13,8 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   return (
-
     <>
-      <Navbar extras={true} marginTop={"mt-10"}/>
+      <Navbar marginTop={"mt-10"}/>
       <main className="lg:mx-[15%] mx-[10%] mt-[5%]">
         <div>
           <div className="flex flex-col gap-10">
@@ -34,9 +33,9 @@ export default function Home() {
         <div className="mt-16 mb-[20%]">
           <ColoredText text={"Featured Events"} size={"md"} />
           <div className="flex mt-20 mx-[-20%] justify-around flex-wrap">
-            <EventCard title="Klubb 1" />
-            <EventCard title="Klubb 2" />
-            <EventCard title="Klubb 3" />
+            <EventCard title="Klubb H" />
+            <EventCard title="Heat" />
+            <EventCard title="Sirocco" />
           </div>
           <div className="flex justify-center mt-12 gap-4 items-center">
             <button
