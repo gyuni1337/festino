@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import useAuth from "@/utils/useAuth";
 import ProfileModal from "./ProfileModal";
 import axiosInstance from "@/utils/axios";
-
+import axios from "axios";
 
 export const getUserInfo = async () => {
   try {
@@ -92,7 +92,7 @@ export default function Navbar({extras, marginTop, shadow}) {
                              <ColorfulButton href="/signup" text="Sign Up" />
                              </div>
                             : <div>
-                                  <Image src={"/defaultPfp.jpg"} alt="Your profile picture" onClick={() => { setShowProfileModal(!showProfileModal)}} className="rounded-2xl" width={50} height={50} />
+                                  <Image src={ "/defaultPfp.jpg"} alt="Your profile picture" onClick={() => { setShowProfileModal(!showProfileModal)}} className="rounded-2xl" width={50} height={50} />
                                 </div>
                             }
                          </ul>

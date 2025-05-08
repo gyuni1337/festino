@@ -30,7 +30,7 @@ const useAuth = () => {
     }
   }, []);
 
-  return isAuthenticated;
+return isAuthenticated;
 };
 
 

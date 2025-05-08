@@ -3,19 +3,10 @@
 import { useState, useRef, useEffect } from "react"
 import { X, Upload, Eye, EyeOff, Music } from "lucide-react"
 import axiosInstance from "@/utils/axios"
+import axios from "axios"
 import { useRouter } from "next/navigation"
 import useAuth from "@/utils/useAuth"
 
-
-export const getUserInfo = async () => {
-  try {
-    const res = await axiosInstance.get('/auth');
-    return res.data.user; 
-  } catch (error) {
-    console.error("Failed to fetch user info:", error);
-    return null;
-  }
-};
 
 
 export default function ProfileModal({ isOpen, onClose }) {
@@ -25,7 +16,6 @@ export default function ProfileModal({ isOpen, onClose }) {
   const [profileImage, setProfileImage] = useState("/defaultPfp.jpg")
   const [user, setUser ] = useState("");
   const fileInputRef = useRef(null)
-  const router = useRouter();
   const isAuthenticated = useAuth();
 
   const handleImageChange = (e) => {
@@ -40,14 +30,29 @@ export default function ProfileModal({ isOpen, onClose }) {
   }
 
 
+
+
+
   useEffect(() => {
 
+const getUserInfo = async () => {
+  try {
+    const res = await axiosInstance.get('/auth');
+    return res.data.user; 
+  } catch (error) {
+console.log("not logged in")
+    return null;
+  }
+};
     const getInfo = async () => {
     const res = await getUserInfo();
     setUser(res);
+    if(res && res.profilePicture) {
+
     setProfileImage(
         res.profilePicture || "/defaultPfp.jpg" // Set default image if none is provided
       ) 
+} else { return; }
     };
 
     getInfo();
